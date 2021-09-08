@@ -1,17 +1,29 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<Title>XKPwGen</Title>
+		<Description>Generates passwords similar to the XKPasswd website. 
+			<br />Inspired y, but developed independently of <a href="https://xkpasswd.net/s/">xkpasswd.net</a> .
+		</Description>
+		<Company>Chris Thompson</Company>
+		<Product>KeePass Plugin</Product>
+		<VersionPrefix>1.0.0</VersionPrefix>
+		<VersionSuffix>dev-0001</VersionSuffix>
+		<GUID>867ef422-c667-4aad-88cf-83280b242d60</GUID>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="KeePassLib" Version="2.30.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.EventSource" Version="5.0.1" />
-  </ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="coverlet.collector" Version="3.1.0">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="KeePass">
+	    <HintPath>KeePass.exe</HintPath>
+	  </Reference>
+	</ItemGroup>
 
 </Project>

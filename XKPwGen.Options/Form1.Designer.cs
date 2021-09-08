@@ -1,5 +1,5 @@
 ﻿
-namespace XKPwGen
+namespace XKPwGen.Options
 {
     partial class Form1
     {

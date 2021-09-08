@@ -5,9 +5,14 @@ VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XKPwGen.Options", "XKPwGen.Options\XKPwGen.Options.csproj", "{386BD8F4-EFC3-4064-A331-7F71C7205F4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XKPwGen.Core", "XKPwGen.Core\XKPwGen.Core.csproj", "{2277C7FE-5973-47B9-BFF5-55DE2B4D67BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XKPwGen.Core", "XKPwGen.Core\XKPwGen.Core.csproj", "{2277C7FE-5973-47B9-BFF5-55DE2B4D67BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XKPwGen.Core.Tests", "XKPwGen.Core.Tests\XKPwGen.Core.Tests.csproj", "{D86CECC9-0FE3-4321-8E27-E5FE4D46AE13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XKPwGen.Core.Tests", "XKPwGen.Core.Tests\XKPwGen.Core.Tests.csproj", "{D86CECC9-0FE3-4321-8E27-E5FE4D46AE13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ABD37D3E-959A-42D2-BD21-D6884AD6364D}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

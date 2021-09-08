@@ -34,14 +34,23 @@ namespace XKPwGen.Core
         /// Each custom password generation algorithm must have
         /// its own unique UUID.
         /// </summary>
-        public override PwUuid Uuid => _guid;
+        public override PwUuid Uuid
+        {
+            get { return _guid; }
+        }
 
         /// <summary>
         /// Displayable name of the password generation algorithm.
         /// </summary>
-        public override string Name => "XKPwGen";
+        public override string Name
+        {
+            get { return "XKPwGen"; }
+        }
 
-        public override bool SupportsOptions => true;
+        public override bool SupportsOptions
+        {
+            get { return true; }
+        }
 
         public override string GetOptions(string strCurrentOptions)
         {

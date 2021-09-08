@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using XKPwGen.Core;
 
-namespace XKPwGen
+namespace XKPwGen.Options
 {
     public partial class Form1 : Form
     {
@@ -47,7 +47,9 @@ namespace XKPwGen
 
         private void SaveSettingsButton_Click(object sender, EventArgs e)
         {
-            var result = BuildOptions();
+            var options = BuildOptions();
+
+            OptionsManager.SaveOptions(options, "default");
         }
     }
 }
