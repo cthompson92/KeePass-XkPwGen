@@ -21,7 +21,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\XKPwGen.Core\XKPwGen.Core.csproj" />
+    <ProjectReference Include="..\XKPwGen\XKPwGen.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="KeePass">
+      <HintPath>..\XKPwGen\KeePass.exe</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

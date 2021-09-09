@@ -1,18 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31612.314
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XKPwGen.Options", "XKPwGen.Options\XKPwGen.Options.csproj", "{386BD8F4-EFC3-4064-A331-7F71C7205F4B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XKPwGen.Core", "XKPwGen.Core\XKPwGen.Core.csproj", "{2277C7FE-5973-47B9-BFF5-55DE2B4D67BD}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XKPwGen.Core.Tests", "XKPwGen.Core.Tests\XKPwGen.Core.Tests.csproj", "{D86CECC9-0FE3-4321-8E27-E5FE4D46AE13}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ABD37D3E-959A-42D2-BD21-D6884AD6364D}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XKPwGen", "XKPwGen\XKPwGen.csproj", "{6623C808-D280-48C8-9CAA-694FC5D00CB5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XKPwGen.Tests", "XKPwGen.Tests\XKPwGen.Tests.csproj", "{31C4161E-A5DE-49E1-8D6B-4E4EAB9F05E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,14 +24,14 @@ Global
 		{386BD8F4-EFC3-4064-A331-7F71C7205F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{386BD8F4-EFC3-4064-A331-7F71C7205F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{386BD8F4-EFC3-4064-A331-7F71C7205F4B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2277C7FE-5973-47B9-BFF5-55DE2B4D67BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2277C7FE-5973-47B9-BFF5-55DE2B4D67BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2277C7FE-5973-47B9-BFF5-55DE2B4D67BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2277C7FE-5973-47B9-BFF5-55DE2B4D67BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D86CECC9-0FE3-4321-8E27-E5FE4D46AE13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D86CECC9-0FE3-4321-8E27-E5FE4D46AE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D86CECC9-0FE3-4321-8E27-E5FE4D46AE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D86CECC9-0FE3-4321-8E27-E5FE4D46AE13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6623C808-D280-48C8-9CAA-694FC5D00CB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6623C808-D280-48C8-9CAA-694FC5D00CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6623C808-D280-48C8-9CAA-694FC5D00CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6623C808-D280-48C8-9CAA-694FC5D00CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31C4161E-A5DE-49E1-8D6B-4E4EAB9F05E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31C4161E-A5DE-49E1-8D6B-4E4EAB9F05E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31C4161E-A5DE-49E1-8D6B-4E4EAB9F05E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31C4161E-A5DE-49E1-8D6B-4E4EAB9F05E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

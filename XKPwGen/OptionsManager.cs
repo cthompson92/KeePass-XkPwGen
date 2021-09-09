@@ -2,15 +2,20 @@
 using System.IO;
 using Newtonsoft.Json;
 
-namespace XKPwGen.Core
+namespace XKPwGen
 {
     public class OptionsManager
     {
         public static string GetOptionsFileName(string profileName)
         {
+            return Path.GetFullPath(GetAppDataPathRoot() + profileName + ".json");
+        }
+
+        public static string GetAppDataPathRoot()
+        {
             var root = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-            return Path.GetFullPath(root + "/XkPwGen/" + profileName + ".json");
+            return Path.GetFullPath(root + "/XkPwGen/");
         }
 
         public static void SaveOptions(PasswordGeneratorOptions options, string profileName)

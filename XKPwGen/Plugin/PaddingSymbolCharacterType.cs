@@ -1,4 +1,4 @@
-﻿namespace XKPwGen.Core
+﻿namespace XKPwGen
 {
     public enum PaddingSymbolCharacterType
     {
