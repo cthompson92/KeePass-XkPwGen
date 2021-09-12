@@ -1,3 +1,4 @@
+using XKPwGen.SharedKernel;
 using Xunit;
 
 namespace XKPwGen.Tests
@@ -16,14 +17,11 @@ namespace XKPwGen.Tests
         {
             //arrange
             var options = new PasswordGeneratorOptions();
-            options.PaddingSymbols.PaddingCharacterAlphabet = "!@#$%^&*";
-            options.PaddingSymbols.PaddingType = PaddingType.Fixed;
 
             //act
             var result = PasswordGenerator.GeneratePassword(TestCryptoRandomStream.Instance, options);
 
             //assert
-
         }
     }
 }

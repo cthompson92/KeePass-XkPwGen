@@ -9,7 +9,7 @@ namespace XKPwGen
     /// KeePass has strict requirements around some aspects of plugin development,
     /// which can be read about <see href="https://keepass.info/help/v2_dev/plg_index.html">here</see>.
     /// </remarks>
-    public class GeneratorPluginExt : Plugin
+    public class XKPwGenExt : Plugin
     {
         private IPluginHost m_host = null;
         private PasswordGenerator m_gen = null;

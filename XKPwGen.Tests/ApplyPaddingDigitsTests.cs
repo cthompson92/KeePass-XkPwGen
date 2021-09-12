@@ -1,5 +1,6 @@
 using FluentAssertions;
 using XkPwGen;
+using XKPwGen.SharedKernel;
 using Xunit;
 
 namespace XKPwGen.Tests

@@ -2,7 +2,8 @@
 
 	<PropertyGroup>
 		<Title>XKPwGen</Title>
-		<Description>Generates passwords similar to the XKPasswd website. 
+		<Description>
+			Generates passwords similar to the XKPasswd website.
 			<br />Inspired by, but developed independently of <a href="https://xkpasswd.net/s/">xkpasswd.net</a> .
 		</Description>
 		<Company>Chris Thompson</Company>
@@ -10,25 +11,21 @@
 		<VersionPrefix>1.0.0</VersionPrefix>
 		<VersionSuffix>dev-0001</VersionSuffix>
 		<Guid>867ef422-c667-4aad-88cf-83280b242d60</Guid>
+		<TargetFrameworks>net45;net461;net472;net48;</TargetFrameworks>
+		<LangVersion>5</LangVersion>
+		<UseWindowsForms>true</UseWindowsForms>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove=".plgx" />
-	  <None Remove="XKPwGen.csproj.DotSettings" />
+		<None Remove=".plgx" />
+		<None Remove="KeePass.exe" />
+		<None Remove="XKPwGen.csproj.DotSettings" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="coverlet.collector" Version="3.1.0">
-	    <PrivateAssets>all</PrivateAssets>
-	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Reference Include="KeePass">
-	    <HintPath>KeePass.exe</HintPath>
-	  </Reference>
+		<Reference Include="KeePass">
+			<HintPath>KeePass.exe</HintPath>
+		</Reference>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -36,6 +33,25 @@
 			<_Parameter1>$(AssemblyName).Tests</_Parameter1>
 			<!-- We use the value of AssemblyName to declare the value of the attribute -->
 		</AssemblyAttribute>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="KeePass.exe">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Costura.Fody" Version="5.6.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\XKPwGen.Options\XKPwGen.Options.csproj" />
+	  <ProjectReference Include="..\XKPwGen.SharedKernel\XKPwGen.SharedKernel.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -2,6 +2,7 @@ using System.Linq;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using XkPwGen;
+using XKPwGen.SharedKernel;
 using Xunit;
 
 namespace XKPwGen.Tests

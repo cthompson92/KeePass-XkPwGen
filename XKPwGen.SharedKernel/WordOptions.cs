@@ -1,6 +1,4 @@
-﻿using XkPwGen;
-
-namespace XKPwGen
+﻿namespace XKPwGen.SharedKernel
 {
     public class WordOptions
     {

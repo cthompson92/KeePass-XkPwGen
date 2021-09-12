@@ -1,0 +1,19 @@
+{
+  "profiles": {
+    "XKPwGen": {
+      "commandName": "Project"
+    },
+    "net461": {
+      "commandName": "Executable",
+      "executablePath": "C:\\git\\Darthruneis\\XKPwGen.Net5\\XKPwGen\\bin\\Debug\\net461\\KeePass.exe"
+    },
+    "net48": {
+      "commandName": "Executable",
+      "executablePath": "C:\\git\\Darthruneis\\XKPwGen.Net5\\XKPwGen\\bin\\Debug\\net48\\KeePass.exe"
+    },
+    "net45": {
+      "commandName": "Executable",
+      "executablePath": "C:\\git\\Darthruneis\\XKPwGen.Net5\\XKPwGen\\bin\\Debug\\net45\\KeePass.exe"
+    }
+  }
+}

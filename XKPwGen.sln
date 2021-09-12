@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31402.337
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XKPwGen.Options", "XKPwGen.Options\XKPwGen.Options.csproj", "{386BD8F4-EFC3-4064-A331-7F71C7205F4B}"
 EndProject
@@ -13,6 +13,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XKPwGen", "XKPwGen\XKPwGen.csproj", "{6623C808-D280-48C8-9CAA-694FC5D00CB5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XKPwGen.Tests", "XKPwGen.Tests\XKPwGen.Tests.csproj", "{31C4161E-A5DE-49E1-8D6B-4E4EAB9F05E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XKPwGen.SharedKernel", "XKPwGen.SharedKernel\XKPwGen.SharedKernel.csproj", "{E0519B81-A9C2-44E1-82F1-8B8E45A366A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{31C4161E-A5DE-49E1-8D6B-4E4EAB9F05E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31C4161E-A5DE-49E1-8D6B-4E4EAB9F05E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31C4161E-A5DE-49E1-8D6B-4E4EAB9F05E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0519B81-A9C2-44E1-82F1-8B8E45A366A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0519B81-A9C2-44E1-82F1-8B8E45A366A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0519B81-A9C2-44E1-82F1-8B8E45A366A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0519B81-A9C2-44E1-82F1-8B8E45A366A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

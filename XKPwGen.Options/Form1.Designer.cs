@@ -50,41 +50,53 @@ namespace XKPwGen.Options
             this.PaddingSymbolsAfterDropdown = new System.Windows.Forms.ComboBox();
             this.PaddingCharacterDropdown = new System.Windows.Forms.ComboBox();
             this.SaveSettingsButton = new System.Windows.Forms.Button();
+            this.XkpasswordSiteLink = new System.Windows.Forms.LinkLabel();
+            this.DictionaryLabel = new System.Windows.Forms.Label();
+            this.NumberOfWordsLabel = new System.Windows.Forms.Label();
+            this.MinimumWordLengthLabel = new System.Windows.Forms.Label();
+            this.MaximumWordLengthLabel = new System.Windows.Forms.Label();
+            this.MaximumWordLengthDropdown = new System.Windows.Forms.ComboBox();
+            this.MinimumWordLengthDropdown = new System.Windows.Forms.ComboBox();
+            this.NumberOfWordsDropdown = new System.Windows.Forms.ComboBox();
+            this.DictionaryDropdown = new System.Windows.Forms.ComboBox();
+            this.ProfileLabel = new System.Windows.Forms.Label();
+            this.ProfileNameCombobox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // CaseTransformationDropdown
             // 
             this.CaseTransformationDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CaseTransformationDropdown.FormattingEnabled = true;
-            this.CaseTransformationDropdown.Location = new System.Drawing.Point(166, 22);
+            this.CaseTransformationDropdown.Location = new System.Drawing.Point(166, 150);
+            this.CaseTransformationDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CaseTransformationDropdown.Name = "CaseTransformationDropdown";
-            this.CaseTransformationDropdown.Size = new System.Drawing.Size(639, 28);
+            this.CaseTransformationDropdown.Size = new System.Drawing.Size(639, 24);
             this.CaseTransformationDropdown.TabIndex = 0;
             // 
             // CaseTransformationLabel
             // 
             this.CaseTransformationLabel.AutoSize = true;
-            this.CaseTransformationLabel.Location = new System.Drawing.Point(18, 25);
+            this.CaseTransformationLabel.Location = new System.Drawing.Point(18, 152);
             this.CaseTransformationLabel.Name = "CaseTransformationLabel";
-            this.CaseTransformationLabel.Size = new System.Drawing.Size(144, 20);
+            this.CaseTransformationLabel.Size = new System.Drawing.Size(132, 16);
             this.CaseTransformationLabel.TabIndex = 1;
             this.CaseTransformationLabel.Text = "Case Transformation";
             // 
             // SeparatorTypeLabel
             // 
             this.SeparatorTypeLabel.AutoSize = true;
-            this.SeparatorTypeLabel.Location = new System.Drawing.Point(18, 75);
+            this.SeparatorTypeLabel.Location = new System.Drawing.Point(18, 192);
             this.SeparatorTypeLabel.Name = "SeparatorTypeLabel";
-            this.SeparatorTypeLabel.Size = new System.Drawing.Size(40, 20);
+            this.SeparatorTypeLabel.Size = new System.Drawing.Size(39, 16);
             this.SeparatorTypeLabel.TabIndex = 2;
             this.SeparatorTypeLabel.Text = "Type";
             // 
             // SeparatorAlphabetLabel
             // 
             this.SeparatorAlphabetLabel.AutoSize = true;
-            this.SeparatorAlphabetLabel.Location = new System.Drawing.Point(326, 76);
+            this.SeparatorAlphabetLabel.Location = new System.Drawing.Point(326, 193);
             this.SeparatorAlphabetLabel.Name = "SeparatorAlphabetLabel";
-            this.SeparatorAlphabetLabel.Size = new System.Drawing.Size(139, 20);
+            this.SeparatorAlphabetLabel.Size = new System.Drawing.Size(124, 16);
             this.SeparatorAlphabetLabel.TabIndex = 3;
             this.SeparatorAlphabetLabel.Text = "Separator Alphabet";
             // 
@@ -92,159 +104,286 @@ namespace XKPwGen.Options
             // 
             this.SeparatorTypeDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SeparatorTypeDropdown.FormattingEnabled = true;
-            this.SeparatorTypeDropdown.Location = new System.Drawing.Point(64, 72);
+            this.SeparatorTypeDropdown.Location = new System.Drawing.Point(64, 190);
+            this.SeparatorTypeDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SeparatorTypeDropdown.Name = "SeparatorTypeDropdown";
-            this.SeparatorTypeDropdown.Size = new System.Drawing.Size(249, 28);
+            this.SeparatorTypeDropdown.Size = new System.Drawing.Size(249, 24);
             this.SeparatorTypeDropdown.TabIndex = 5;
             // 
             // PaddingDigitsBeforeLabel
             // 
             this.PaddingDigitsBeforeLabel.AutoSize = true;
-            this.PaddingDigitsBeforeLabel.Location = new System.Drawing.Point(18, 124);
+            this.PaddingDigitsBeforeLabel.Location = new System.Drawing.Point(18, 231);
             this.PaddingDigitsBeforeLabel.Name = "PaddingDigitsBeforeLabel";
-            this.PaddingDigitsBeforeLabel.Size = new System.Drawing.Size(106, 20);
+            this.PaddingDigitsBeforeLabel.Size = new System.Drawing.Size(92, 16);
             this.PaddingDigitsBeforeLabel.TabIndex = 6;
             this.PaddingDigitsBeforeLabel.Text = "Digit(s) Before";
             // 
             // PaddingDigitsAfterLabel
             // 
             this.PaddingDigitsAfterLabel.AutoSize = true;
-            this.PaddingDigitsAfterLabel.Location = new System.Drawing.Point(326, 124);
+            this.PaddingDigitsAfterLabel.Location = new System.Drawing.Point(326, 231);
             this.PaddingDigitsAfterLabel.Name = "PaddingDigitsAfterLabel";
-            this.PaddingDigitsAfterLabel.Size = new System.Drawing.Size(106, 20);
+            this.PaddingDigitsAfterLabel.Size = new System.Drawing.Size(79, 16);
             this.PaddingDigitsAfterLabel.TabIndex = 7;
-            this.PaddingDigitsAfterLabel.Text = "Digit(s) Before";
+            this.PaddingDigitsAfterLabel.Text = "Digit(s) After";
             // 
             // PaddingDigitsBeforeDropdown
             // 
             this.PaddingDigitsBeforeDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaddingDigitsBeforeDropdown.FormattingEnabled = true;
-            this.PaddingDigitsBeforeDropdown.Location = new System.Drawing.Point(150, 121);
+            this.PaddingDigitsBeforeDropdown.Location = new System.Drawing.Point(150, 229);
+            this.PaddingDigitsBeforeDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PaddingDigitsBeforeDropdown.Name = "PaddingDigitsBeforeDropdown";
-            this.PaddingDigitsBeforeDropdown.Size = new System.Drawing.Size(151, 28);
+            this.PaddingDigitsBeforeDropdown.Size = new System.Drawing.Size(151, 24);
             this.PaddingDigitsBeforeDropdown.TabIndex = 8;
             // 
             // PaddingDigitsAfterDropdown
             // 
             this.PaddingDigitsAfterDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaddingDigitsAfterDropdown.FormattingEnabled = true;
-            this.PaddingDigitsAfterDropdown.Location = new System.Drawing.Point(438, 121);
+            this.PaddingDigitsAfterDropdown.Location = new System.Drawing.Point(438, 229);
+            this.PaddingDigitsAfterDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PaddingDigitsAfterDropdown.Name = "PaddingDigitsAfterDropdown";
-            this.PaddingDigitsAfterDropdown.Size = new System.Drawing.Size(84, 28);
+            this.PaddingDigitsAfterDropdown.Size = new System.Drawing.Size(84, 24);
             this.PaddingDigitsAfterDropdown.TabIndex = 9;
             // 
             // PaddingTypeLabel
             // 
             this.PaddingTypeLabel.AutoSize = true;
-            this.PaddingTypeLabel.Location = new System.Drawing.Point(18, 175);
+            this.PaddingTypeLabel.Location = new System.Drawing.Point(18, 272);
             this.PaddingTypeLabel.Name = "PaddingTypeLabel";
-            this.PaddingTypeLabel.Size = new System.Drawing.Size(98, 20);
+            this.PaddingTypeLabel.Size = new System.Drawing.Size(93, 16);
             this.PaddingTypeLabel.TabIndex = 10;
             this.PaddingTypeLabel.Text = "Padding Type";
             // 
             // PaddingSymbolsBeforeLabel
             // 
             this.PaddingSymbolsBeforeLabel.AutoSize = true;
-            this.PaddingSymbolsBeforeLabel.Location = new System.Drawing.Point(408, 175);
+            this.PaddingSymbolsBeforeLabel.Location = new System.Drawing.Point(408, 272);
             this.PaddingSymbolsBeforeLabel.Name = "PaddingSymbolsBeforeLabel";
-            this.PaddingSymbolsBeforeLabel.Size = new System.Drawing.Size(123, 20);
+            this.PaddingSymbolsBeforeLabel.Size = new System.Drawing.Size(111, 16);
             this.PaddingSymbolsBeforeLabel.TabIndex = 11;
             this.PaddingSymbolsBeforeLabel.Text = "Symbol(s) Before";
             // 
             // PaddingSymbolsAfterLabel
             // 
             this.PaddingSymbolsAfterLabel.AutoSize = true;
-            this.PaddingSymbolsAfterLabel.Location = new System.Drawing.Point(610, 175);
+            this.PaddingSymbolsAfterLabel.Location = new System.Drawing.Point(610, 272);
             this.PaddingSymbolsAfterLabel.Name = "PaddingSymbolsAfterLabel";
-            this.PaddingSymbolsAfterLabel.Size = new System.Drawing.Size(112, 20);
+            this.PaddingSymbolsAfterLabel.Size = new System.Drawing.Size(98, 16);
             this.PaddingSymbolsAfterLabel.TabIndex = 12;
             this.PaddingSymbolsAfterLabel.Text = "Symbol(s) After";
             // 
             // PaddingCharacterTypeLabel
             // 
             this.PaddingCharacterTypeLabel.AutoSize = true;
-            this.PaddingCharacterTypeLabel.Location = new System.Drawing.Point(18, 227);
+            this.PaddingCharacterTypeLabel.Location = new System.Drawing.Point(18, 314);
             this.PaddingCharacterTypeLabel.Name = "PaddingCharacterTypeLabel";
-            this.PaddingCharacterTypeLabel.Size = new System.Drawing.Size(130, 20);
+            this.PaddingCharacterTypeLabel.Size = new System.Drawing.Size(119, 16);
             this.PaddingCharacterTypeLabel.TabIndex = 13;
             this.PaddingCharacterTypeLabel.Text = "Padding Character";
             // 
             // PaddingAlphabetLabel
             // 
             this.PaddingAlphabetLabel.AutoSize = true;
-            this.PaddingAlphabetLabel.Location = new System.Drawing.Point(408, 227);
+            this.PaddingAlphabetLabel.Location = new System.Drawing.Point(408, 314);
             this.PaddingAlphabetLabel.Name = "PaddingAlphabetLabel";
-            this.PaddingAlphabetLabel.Size = new System.Drawing.Size(195, 20);
+            this.PaddingAlphabetLabel.Size = new System.Drawing.Size(176, 16);
             this.PaddingAlphabetLabel.TabIndex = 14;
             this.PaddingAlphabetLabel.Text = "Padding Character Alphabet";
             // 
             // SeparatorAlphabetTextbox
             // 
-            this.SeparatorAlphabetTextbox.Location = new System.Drawing.Point(496, 73);
+            this.SeparatorAlphabetTextbox.Location = new System.Drawing.Point(496, 190);
+            this.SeparatorAlphabetTextbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SeparatorAlphabetTextbox.Name = "SeparatorAlphabetTextbox";
-            this.SeparatorAlphabetTextbox.Size = new System.Drawing.Size(309, 27);
+            this.SeparatorAlphabetTextbox.Size = new System.Drawing.Size(309, 22);
             this.SeparatorAlphabetTextbox.TabIndex = 4;
             // 
             // PaddingCharacterAlphabetTextbox
             // 
-            this.PaddingCharacterAlphabetTextbox.Location = new System.Drawing.Point(609, 223);
+            this.PaddingCharacterAlphabetTextbox.Location = new System.Drawing.Point(609, 310);
+            this.PaddingCharacterAlphabetTextbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PaddingCharacterAlphabetTextbox.Name = "PaddingCharacterAlphabetTextbox";
-            this.PaddingCharacterAlphabetTextbox.Size = new System.Drawing.Size(196, 27);
+            this.PaddingCharacterAlphabetTextbox.Size = new System.Drawing.Size(196, 22);
             this.PaddingCharacterAlphabetTextbox.TabIndex = 15;
             // 
             // PaddingTypeDropdown
             // 
             this.PaddingTypeDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaddingTypeDropdown.FormattingEnabled = true;
-            this.PaddingTypeDropdown.Location = new System.Drawing.Point(150, 172);
+            this.PaddingTypeDropdown.Location = new System.Drawing.Point(150, 270);
+            this.PaddingTypeDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PaddingTypeDropdown.Name = "PaddingTypeDropdown";
-            this.PaddingTypeDropdown.Size = new System.Drawing.Size(237, 28);
+            this.PaddingTypeDropdown.Size = new System.Drawing.Size(237, 24);
             this.PaddingTypeDropdown.TabIndex = 16;
             // 
             // PaddingSymbolsBeforeDropdown
             // 
             this.PaddingSymbolsBeforeDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaddingSymbolsBeforeDropdown.FormattingEnabled = true;
-            this.PaddingSymbolsBeforeDropdown.Location = new System.Drawing.Point(537, 172);
+            this.PaddingSymbolsBeforeDropdown.Location = new System.Drawing.Point(537, 270);
+            this.PaddingSymbolsBeforeDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PaddingSymbolsBeforeDropdown.Name = "PaddingSymbolsBeforeDropdown";
-            this.PaddingSymbolsBeforeDropdown.Size = new System.Drawing.Size(67, 28);
+            this.PaddingSymbolsBeforeDropdown.Size = new System.Drawing.Size(67, 24);
             this.PaddingSymbolsBeforeDropdown.TabIndex = 17;
             // 
             // PaddingSymbolsAfterDropdown
             // 
             this.PaddingSymbolsAfterDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaddingSymbolsAfterDropdown.FormattingEnabled = true;
-            this.PaddingSymbolsAfterDropdown.Location = new System.Drawing.Point(728, 172);
+            this.PaddingSymbolsAfterDropdown.Location = new System.Drawing.Point(728, 270);
+            this.PaddingSymbolsAfterDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PaddingSymbolsAfterDropdown.Name = "PaddingSymbolsAfterDropdown";
-            this.PaddingSymbolsAfterDropdown.Size = new System.Drawing.Size(77, 28);
+            this.PaddingSymbolsAfterDropdown.Size = new System.Drawing.Size(77, 24);
             this.PaddingSymbolsAfterDropdown.TabIndex = 18;
             // 
             // PaddingCharacterDropdown
             // 
             this.PaddingCharacterDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaddingCharacterDropdown.FormattingEnabled = true;
-            this.PaddingCharacterDropdown.Location = new System.Drawing.Point(150, 223);
+            this.PaddingCharacterDropdown.Location = new System.Drawing.Point(150, 310);
+            this.PaddingCharacterDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PaddingCharacterDropdown.Name = "PaddingCharacterDropdown";
-            this.PaddingCharacterDropdown.Size = new System.Drawing.Size(237, 28);
+            this.PaddingCharacterDropdown.Size = new System.Drawing.Size(237, 24);
             this.PaddingCharacterDropdown.TabIndex = 19;
             // 
             // SaveSettingsButton
             // 
             this.SaveSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveSettingsButton.Location = new System.Drawing.Point(669, 267);
+            this.SaveSettingsButton.Location = new System.Drawing.Point(667, 347);
+            this.SaveSettingsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SaveSettingsButton.Name = "SaveSettingsButton";
-            this.SaveSettingsButton.Size = new System.Drawing.Size(136, 29);
+            this.SaveSettingsButton.Size = new System.Drawing.Size(136, 23);
             this.SaveSettingsButton.TabIndex = 20;
             this.SaveSettingsButton.Text = "Save";
             this.SaveSettingsButton.UseVisualStyleBackColor = true;
             this.SaveSettingsButton.Click += new System.EventHandler(this.SaveSettingsButton_Click);
             // 
+            // XkpasswordSiteLink
+            // 
+            this.XkpasswordSiteLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.XkpasswordSiteLink.AutoSize = true;
+            this.XkpasswordSiteLink.Location = new System.Drawing.Point(18, 350);
+            this.XkpasswordSiteLink.Name = "XkpasswordSiteLink";
+            this.XkpasswordSiteLink.Size = new System.Drawing.Size(408, 16);
+            this.XkpasswordSiteLink.TabIndex = 21;
+            this.XkpasswordSiteLink.TabStop = true;
+            this.XkpasswordSiteLink.Text = "Inspired by XKPassword.net - please consider giving it your support!";
+            this.XkpasswordSiteLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // DictionaryLabel
+            // 
+            this.DictionaryLabel.AutoSize = true;
+            this.DictionaryLabel.Location = new System.Drawing.Point(18, 73);
+            this.DictionaryLabel.Name = "DictionaryLabel";
+            this.DictionaryLabel.Size = new System.Drawing.Size(67, 16);
+            this.DictionaryLabel.TabIndex = 22;
+            this.DictionaryLabel.Text = "Dictionary";
+            // 
+            // NumberOfWordsLabel
+            // 
+            this.NumberOfWordsLabel.AutoSize = true;
+            this.NumberOfWordsLabel.Location = new System.Drawing.Point(18, 114);
+            this.NumberOfWordsLabel.Name = "NumberOfWordsLabel";
+            this.NumberOfWordsLabel.Size = new System.Drawing.Size(112, 16);
+            this.NumberOfWordsLabel.TabIndex = 23;
+            this.NumberOfWordsLabel.Text = "Number of Words";
+            // 
+            // MinimumWordLengthLabel
+            // 
+            this.MinimumWordLengthLabel.AutoSize = true;
+            this.MinimumWordLengthLabel.Location = new System.Drawing.Point(235, 114);
+            this.MinimumWordLengthLabel.Name = "MinimumWordLengthLabel";
+            this.MinimumWordLengthLabel.Size = new System.Drawing.Size(103, 16);
+            this.MinimumWordLengthLabel.TabIndex = 24;
+            this.MinimumWordLengthLabel.Text = "Minimum Length";
+            // 
+            // MaximumWordLengthLabel
+            // 
+            this.MaximumWordLengthLabel.AutoSize = true;
+            this.MaximumWordLengthLabel.Location = new System.Drawing.Point(435, 114);
+            this.MaximumWordLengthLabel.Name = "MaximumWordLengthLabel";
+            this.MaximumWordLengthLabel.Size = new System.Drawing.Size(107, 16);
+            this.MaximumWordLengthLabel.TabIndex = 25;
+            this.MaximumWordLengthLabel.Text = "Maximum Length";
+            // 
+            // MaximumWordLengthDropdown
+            // 
+            this.MaximumWordLengthDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MaximumWordLengthDropdown.FormattingEnabled = true;
+            this.MaximumWordLengthDropdown.Location = new System.Drawing.Point(548, 111);
+            this.MaximumWordLengthDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumWordLengthDropdown.Name = "MaximumWordLengthDropdown";
+            this.MaximumWordLengthDropdown.Size = new System.Drawing.Size(77, 24);
+            this.MaximumWordLengthDropdown.TabIndex = 26;
+            // 
+            // MinimumWordLengthDropdown
+            // 
+            this.MinimumWordLengthDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MinimumWordLengthDropdown.FormattingEnabled = true;
+            this.MinimumWordLengthDropdown.Location = new System.Drawing.Point(344, 111);
+            this.MinimumWordLengthDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumWordLengthDropdown.Name = "MinimumWordLengthDropdown";
+            this.MinimumWordLengthDropdown.Size = new System.Drawing.Size(67, 24);
+            this.MinimumWordLengthDropdown.TabIndex = 27;
+            // 
+            // NumberOfWordsDropdown
+            // 
+            this.NumberOfWordsDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.NumberOfWordsDropdown.FormattingEnabled = true;
+            this.NumberOfWordsDropdown.Location = new System.Drawing.Point(150, 111);
+            this.NumberOfWordsDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NumberOfWordsDropdown.Name = "NumberOfWordsDropdown";
+            this.NumberOfWordsDropdown.Size = new System.Drawing.Size(67, 24);
+            this.NumberOfWordsDropdown.TabIndex = 28;
+            // 
+            // DictionaryDropdown
+            // 
+            this.DictionaryDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DictionaryDropdown.FormattingEnabled = true;
+            this.DictionaryDropdown.Location = new System.Drawing.Point(150, 70);
+            this.DictionaryDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DictionaryDropdown.Name = "DictionaryDropdown";
+            this.DictionaryDropdown.Size = new System.Drawing.Size(249, 24);
+            this.DictionaryDropdown.TabIndex = 29;
+            // 
+            // ProfileLabel
+            // 
+            this.ProfileLabel.AutoSize = true;
+            this.ProfileLabel.Location = new System.Drawing.Point(18, 29);
+            this.ProfileLabel.Name = "ProfileLabel";
+            this.ProfileLabel.Size = new System.Drawing.Size(45, 16);
+            this.ProfileLabel.TabIndex = 30;
+            this.ProfileLabel.Text = "Profile";
+            // 
+            // ProfileNameCombobox
+            // 
+            this.ProfileNameCombobox.FormattingEnabled = true;
+            this.ProfileNameCombobox.Location = new System.Drawing.Point(150, 29);
+            this.ProfileNameCombobox.Name = "ProfileNameCombobox";
+            this.ProfileNameCombobox.Size = new System.Drawing.Size(655, 24);
+            this.ProfileNameCombobox.TabIndex = 31;
+            this.ProfileNameCombobox.SelectedIndexChanged += new System.EventHandler(this.ProfileNameCombobox_SelectedIndexChanged);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(824, 312);
+            this.ClientSize = new System.Drawing.Size(822, 383);
+            this.Controls.Add(this.ProfileNameCombobox);
+            this.Controls.Add(this.ProfileLabel);
+            this.Controls.Add(this.DictionaryDropdown);
+            this.Controls.Add(this.NumberOfWordsDropdown);
+            this.Controls.Add(this.MinimumWordLengthDropdown);
+            this.Controls.Add(this.MaximumWordLengthDropdown);
+            this.Controls.Add(this.MaximumWordLengthLabel);
+            this.Controls.Add(this.MinimumWordLengthLabel);
+            this.Controls.Add(this.NumberOfWordsLabel);
+            this.Controls.Add(this.DictionaryLabel);
+            this.Controls.Add(this.XkpasswordSiteLink);
             this.Controls.Add(this.SaveSettingsButton);
             this.Controls.Add(this.PaddingCharacterDropdown);
             this.Controls.Add(this.PaddingSymbolsAfterDropdown);
@@ -266,7 +405,8 @@ namespace XKPwGen.Options
             this.Controls.Add(this.SeparatorTypeLabel);
             this.Controls.Add(this.CaseTransformationLabel);
             this.Controls.Add(this.CaseTransformationDropdown);
-            this.MinimumSize = new System.Drawing.Size(840, 320);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(840, 430);
             this.Name = "Form1";
             this.Text = "XkPwGen Options";
             this.ResumeLayout(false);
@@ -297,6 +437,17 @@ namespace XKPwGen.Options
         private System.Windows.Forms.ComboBox PaddingSymbolsAfterDropdown;
         private System.Windows.Forms.ComboBox PaddingCharacterDropdown;
         private System.Windows.Forms.Button SaveSettingsButton;
+        private System.Windows.Forms.LinkLabel XkpasswordSiteLink;
+        private System.Windows.Forms.Label DictionaryLabel;
+        private System.Windows.Forms.Label NumberOfWordsLabel;
+        private System.Windows.Forms.Label MinimumWordLengthLabel;
+        private System.Windows.Forms.Label MaximumWordLengthLabel;
+        private System.Windows.Forms.ComboBox MaximumWordLengthDropdown;
+        private System.Windows.Forms.ComboBox MinimumWordLengthDropdown;
+        private System.Windows.Forms.ComboBox NumberOfWordsDropdown;
+        private System.Windows.Forms.ComboBox DictionaryDropdown;
+        private System.Windows.Forms.Label ProfileLabel;
+        private System.Windows.Forms.ComboBox ProfileNameCombobox;
     }
 }
 

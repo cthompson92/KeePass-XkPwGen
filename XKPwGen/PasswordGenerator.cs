@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -8,6 +7,8 @@ using KeePassLib.Cryptography;
 using KeePassLib.Cryptography.PasswordGenerator;
 using KeePassLib.Security;
 using XkPwGen;
+using XKPwGen.Options;
+using XKPwGen.SharedKernel;
 
 namespace XKPwGen
 {
@@ -38,11 +39,56 @@ namespace XKPwGen
                 Debug.Assert(prf.CustomAlgorithmUuid == Convert.ToBase64String(_guid.UuidBytes, Base64FormattingOptions.None));
             }
 
-            var options = OptionsManager.LoadOptions(prf.Name);
+            try
+            {
+                var options = OptionsManager.LoadOptions(prf.Name);
+                if (options == null)
+                {
+#if DEBUG 
+                    options = new PasswordGeneratorOptions()
+                    {
+                        WordOptions = new WordOptions()
+                        {
+                            NumberOfWords = 3,
+                            MaxLength = 8,
+                            MinLength = 3
+                        },
+                        Transformations = new TransformationOptions()
+                        {
+                            CaseTransformation = CaseTransformationType.AlternatingWordCase,
+                        },
+                        Separator = new SeparatorOptions()
+                        {
+                            SpecificSeparatorCharacter = ' ',
+                            SeparatorType = SeparatorType.SpecifiedCharacter,
+                        },
+                        PaddingDigits = new PaddingDigitOptions()
+                        {
+                            DigitsAfter = 2,
+                            DigitsBefore = 2,
+                        },
+                        PaddingSymbols = new PaddingSymbolOptions()
+                        {
+                            SymbolsStart = 2,
+                            SymbolsEnd = 2,
+                            PaddingType = PaddingType.Fixed,
+                            PaddingCharacterAlphabet = PwCharSet.Special,
+                        }
+                    };
+#else
+                    options = new PasswordGeneratorOptions();
+#endif
+                }
 
-            var pw = GeneratePassword(crsRandomSource, options);
+                var pw = GeneratePassword(crsRandomSource, options);
 
-            return new ProtectedString(false, pw);
+                return new ProtectedString(false, pw);
+            }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex);
+                throw;
+            }            
         }
 
         internal static string GeneratePassword(CryptoRandomStream crsRandomSource, PasswordGeneratorOptions options)
@@ -94,7 +140,11 @@ namespace XKPwGen
 
         public override string GetOptions(string strCurrentOptions)
         {
-            return base.GetOptions(strCurrentOptions);
+            var optionsUi = new Form1();
+            optionsUi.OnSaveButtonClicked += OptionsManager.SaveOptions;
+            optionsUi.ShowDialog();
+
+            return optionsUi.ProfileName;
         }
     }
 }
