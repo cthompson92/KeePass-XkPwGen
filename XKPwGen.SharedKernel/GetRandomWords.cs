@@ -10,7 +10,7 @@ namespace XKPwGen.SharedKernel
         {
             return Path.GetFullPath(
                 OptionsManager.GetAppDataPathRoot()
-              + string.Format("/{0}/words_alpha_{1}.txt", dictionary, length));
+              + string.Format("/{0}/google-10000-english-usa-no-swears_{1}.dictdata", dictionary, length));
         }
 
         private static string GetWordOfLengthFromDictionary(WordDictionary dictionary, int length, CryptoRandomStream crsRandomSource)

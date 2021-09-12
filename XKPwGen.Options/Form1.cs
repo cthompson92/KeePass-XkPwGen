@@ -57,7 +57,7 @@ namespace XKPwGen.Options
 
         internal static Form1 Default()
         {
-            return From(new PasswordGeneratorOptions(), "");
+            return From(OptionsManager.LoadCurrentOptions(), OptionsManager.GetCurrentProfileName());
         }
 
         public static Form1 From(PasswordGeneratorOptions options, string profileName)

@@ -13,9 +13,14 @@ namespace XKPwGen.SharedKernel
             return Path.GetFullPath(GetAppDataPathRoot() + profileName + ".json");
         }
 
+        public static string GetCurrentProfileName()
+        {
+            return File.ReadAllText(GetSelectedProfileFilePath());
+        }
+
         public static PasswordGeneratorOptions LoadCurrentOptions()
         {
-            var profileName = File.ReadAllText(GetSelectedProfileFilePath());
+            var profileName = GetCurrentProfileName();
             if (string.IsNullOrWhiteSpace(profileName))
             {
                 return new PasswordGeneratorOptions();
