@@ -19,6 +19,8 @@ namespace XKPwGen
             0x2B, 0x08, 0x40, 0x54,
         });
 
+        private PasswordGeneratorOptions _options = null;
+
         /// <summary>Password generation function.</summary>
         /// <param name="prf">Password generation options chosen
         /// by the user. This may be <c>null</c>, if the default
@@ -36,9 +38,10 @@ namespace XKPwGen
                 Debug.Assert(prf.CustomAlgorithmUuid == Convert.ToBase64String(_guid.UuidBytes, Base64FormattingOptions.None));
             }
 
+            var options = OptionsManager.LoadCurrentOptions();
+
             try
             {
-                var options = OptionsManager.LoadOptions(prf.Name);
                 if (options == null)
                 {
 #if DEBUG 
@@ -114,6 +117,7 @@ namespace XKPwGen
         {
             var optionsUi = new Form1();
             optionsUi.OnSaveButtonClicked += OptionsManager.SaveOptions;
+            optionsUi.OnApplyButtonClicked += OptionsManager.SaveSelectedProfileName;
             optionsUi.ShowDialog();
 
             return optionsUi.ProfileName;

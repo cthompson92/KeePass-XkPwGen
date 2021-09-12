@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,9 +17,7 @@ namespace XKPwGen.Options
         {
             InitializeComponent();
 
-            ProfileNameCombobox.DataSource = OptionsManager.GetProfileFiles()
-                                                           .Select(x => Path.GetFileNameWithoutExtension(x.Name))
-                                                           .ToList();
+            SetProfileNameData();
 
             DictionaryDropdown.DataSource = Enum.GetValues(typeof(WordDictionary));
             NumberOfWordsDropdown.DataSource = Enumerable.Range(2, 9).ToList();
@@ -39,6 +39,18 @@ namespace XKPwGen.Options
             PaddingCharacterAlphabetTextbox.Text = DefaultCharacterAlphabet;
 
             NumberOfExamplePasswordsDropdown.DataSource = Enumerable.Range(1, 20).ToList();
+
+            _safeUpdateProfileNames = new UpdateProfileNames(SetProfileNameData);
+
+            FormClosed += (sender, args) => CleanUpClosedExplorerWindows();
+        }
+
+        private void SetProfileNameData()
+        {
+            ProfileNameCombobox.DataSource = OptionsManager.GetProfileFiles()
+                                                           .Select(x => Path.GetFileNameWithoutExtension(x.Name))
+                                                           .ToList();
+            ProfileNameCombobox.Refresh();
         }
 
         internal static Form1 Default()
@@ -103,10 +115,6 @@ namespace XKPwGen.Options
             return options;
         }
 
-        public delegate void SaveButtonClicked(PasswordGeneratorOptions options, string profileName);
-
-        public event SaveButtonClicked OnSaveButtonClicked;
-
         public string ProfileName
         {
             get
@@ -128,6 +136,10 @@ namespace XKPwGen.Options
             }
         }
 
+        public delegate void SaveButtonClicked(PasswordGeneratorOptions options, string profileName);
+
+        public event SaveButtonClicked OnSaveButtonClicked;
+
         private void SaveSettingsButton_Click(object sender, EventArgs e)
         {
             var options = BuildOptions();
@@ -136,6 +148,8 @@ namespace XKPwGen.Options
             {
                 OnSaveButtonClicked.Invoke(options, ProfileName);
             }
+
+            SetProfileNameData();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -144,7 +158,7 @@ namespace XKPwGen.Options
             XkpasswordSiteLink.LinkVisited = true;
 
             // Navigate to a URL.
-            System.Diagnostics.Process.Start("https://xkpasswd.net/s/");
+            Process.Start("https://xkpasswd.net/s/");
         }
 
         private void ProfileNameCombobox_SelectedIndexChanged(object sender, EventArgs e)
@@ -164,6 +178,48 @@ namespace XKPwGen.Options
             }
 
             ExamplePasswordsTextbox.Text = sb.ToString();
+        }
+
+        public delegate void ApplyButtonClicked(string profileName);
+
+        public event ApplyButtonClicked OnApplyButtonClicked;
+
+        private void ApplyProfileButton_Click(object sender, EventArgs e)
+        {
+            SaveSettingsButton_Click(sender, e);
+
+            if (OnApplyButtonClicked != null)
+            {
+                OnApplyButtonClicked.Invoke(ProfileName);
+            }
+        }
+
+        private delegate void UpdateProfileNames();
+
+        private readonly UpdateProfileNames _safeUpdateProfileNames;
+
+        private List<Process> _explorerWindows = new List<Process>();
+
+        private void CleanUpClosedExplorerWindows()
+        {
+            foreach (var window in _explorerWindows.Where(x => x.HasExited).ToList())
+            {
+                window.Dispose();
+                _explorerWindows.Remove(window);
+            }
+        }
+
+        private void ManageProfilesButton_Click(object sender, EventArgs e)
+        {
+            CleanUpClosedExplorerWindows();
+
+            var process = Process.Start(new ProcessStartInfo("explorer.exe", OptionsManager.GetAppDataPathRoot()));
+            process.EnableRaisingEvents = true;
+            process.Exited += (o, args) =>
+            {
+                ProfileNameCombobox.Invoke(_safeUpdateProfileNames);
+            };
+            _explorerWindows.Add(process);
         }
     }
 }

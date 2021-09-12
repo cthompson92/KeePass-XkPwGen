@@ -66,6 +66,8 @@ namespace XKPwGen.Options
             this.ExamplePasswordsLabel = new System.Windows.Forms.Label();
             this.ExamplePasswordsTextbox = new System.Windows.Forms.TextBox();
             this.GenerateExamplesButton = new System.Windows.Forms.Button();
+            this.ApplyProfileButton = new System.Windows.Forms.Button();
+            this.ManageProfilesButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CaseTransformationDropdown
@@ -366,9 +368,9 @@ namespace XKPwGen.Options
             // ProfileNameCombobox
             // 
             this.ProfileNameCombobox.FormattingEnabled = true;
-            this.ProfileNameCombobox.Location = new System.Drawing.Point(150, 29);
+            this.ProfileNameCombobox.Location = new System.Drawing.Point(69, 26);
             this.ProfileNameCombobox.Name = "ProfileNameCombobox";
-            this.ProfileNameCombobox.Size = new System.Drawing.Size(655, 24);
+            this.ProfileNameCombobox.Size = new System.Drawing.Size(483, 24);
             this.ProfileNameCombobox.TabIndex = 31;
             this.ProfileNameCombobox.SelectedIndexChanged += new System.EventHandler(this.ProfileNameCombobox_SelectedIndexChanged);
             // 
@@ -422,12 +424,38 @@ namespace XKPwGen.Options
             this.GenerateExamplesButton.UseVisualStyleBackColor = true;
             this.GenerateExamplesButton.Click += new System.EventHandler(this.GenerateExamplesButton_Click);
             // 
+            // ApplyProfileButton
+            // 
+            this.ApplyProfileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ApplyProfileButton.Location = new System.Drawing.Point(700, 26);
+            this.ApplyProfileButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ApplyProfileButton.Name = "ApplyProfileButton";
+            this.ApplyProfileButton.Size = new System.Drawing.Size(120, 24);
+            this.ApplyProfileButton.TabIndex = 37;
+            this.ApplyProfileButton.Text = "Apply";
+            this.ApplyProfileButton.UseVisualStyleBackColor = true;
+            this.ApplyProfileButton.Click += new System.EventHandler(this.ApplyProfileButton_Click);
+            // 
+            // ManageProfilesButton
+            // 
+            this.ManageProfilesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ManageProfilesButton.Location = new System.Drawing.Point(558, 26);
+            this.ManageProfilesButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ManageProfilesButton.Name = "ManageProfilesButton";
+            this.ManageProfilesButton.Size = new System.Drawing.Size(136, 24);
+            this.ManageProfilesButton.TabIndex = 38;
+            this.ManageProfilesButton.Text = "Manage";
+            this.ManageProfilesButton.UseVisualStyleBackColor = true;
+            this.ManageProfilesButton.Click += new System.EventHandler(this.ManageProfilesButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(822, 567);
+            this.Controls.Add(this.ManageProfilesButton);
+            this.Controls.Add(this.ApplyProfileButton);
             this.Controls.Add(this.GenerateExamplesButton);
             this.Controls.Add(this.ExamplePasswordsTextbox);
             this.Controls.Add(this.ExamplePasswordsLabel);
@@ -513,6 +541,8 @@ namespace XKPwGen.Options
         private System.Windows.Forms.Label ExamplePasswordsLabel;
         private System.Windows.Forms.TextBox ExamplePasswordsTextbox;
         private System.Windows.Forms.Button GenerateExamplesButton;
+        private System.Windows.Forms.Button ApplyProfileButton;
+        private System.Windows.Forms.Button ManageProfilesButton;
     }
 }
 

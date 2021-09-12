@@ -13,6 +13,34 @@ namespace XKPwGen.SharedKernel
             return Path.GetFullPath(GetAppDataPathRoot() + profileName + ".json");
         }
 
+        public static PasswordGeneratorOptions LoadCurrentOptions()
+        {
+            var profileName = File.ReadAllText(GetSelectedProfileFilePath());
+            if (string.IsNullOrWhiteSpace(profileName))
+            {
+                return new PasswordGeneratorOptions();
+            }
+
+            return LoadOptions(profileName);
+        }
+
+        private static string GetSelectedProfileFilePath()
+        {
+            return Path.GetFullPath(GetAppDataPathRoot() + ".sprof");
+        }
+
+        public static void SaveSelectedProfileName(string profileName)
+        {
+            var fileName = GetSelectedProfileFilePath();
+            var file = new FileInfo(fileName);
+            if (!file.Exists && !file.Directory.Exists)
+            {
+                file.Directory.Create();
+            }
+
+            File.WriteAllText(fileName, profileName);
+        }
+
         public static string GetAppDataPathRoot()
         {
             var root = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
