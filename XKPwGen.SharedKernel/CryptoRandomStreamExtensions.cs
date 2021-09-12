@@ -16,13 +16,16 @@ namespace XKPwGen.SharedKernel
         internal static ulong NextRandom(this CryptoRandomStream crs, int minValue, int maxValue)
         {
             if (minValue < 0)
-                throw new ArgumentOutOfRangeException("minValue", minValue, "minLength must be positive or zero.");
+                throw new ArgumentOutOfRangeException("minValue", minValue, "minValue must be positive or zero.");
 
             if (maxValue < 1)
-                throw new ArgumentOutOfRangeException("maxValue", maxValue, "maxLength must be positive.");
+                throw new ArgumentOutOfRangeException("maxValue", maxValue, "maxValue must be positive.");
 
             if (minValue > maxValue)
-                throw new ArgumentOutOfRangeException("minValue", minValue, "minLength cannot exceed maxLength");
+                throw new ArgumentOutOfRangeException("minValue", minValue, "minValue cannot exceed maxLength");
+
+            if (minValue == maxValue)
+                throw new ArgumentOutOfRangeException("maxValue", maxValue, "maxValue must be higher than minValue");
 
             var min = (ulong)minValue;
 

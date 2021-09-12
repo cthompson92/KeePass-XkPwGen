@@ -61,6 +61,11 @@ namespace XKPwGen.Options
             this.DictionaryDropdown = new System.Windows.Forms.ComboBox();
             this.ProfileLabel = new System.Windows.Forms.Label();
             this.ProfileNameCombobox = new System.Windows.Forms.ComboBox();
+            this.GenerateLabel = new System.Windows.Forms.Label();
+            this.NumberOfExamplePasswordsDropdown = new System.Windows.Forms.ComboBox();
+            this.ExamplePasswordsLabel = new System.Windows.Forms.Label();
+            this.ExamplePasswordsTextbox = new System.Windows.Forms.TextBox();
+            this.GenerateExamplesButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CaseTransformationDropdown
@@ -252,7 +257,7 @@ namespace XKPwGen.Options
             // SaveSettingsButton
             // 
             this.SaveSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveSettingsButton.Location = new System.Drawing.Point(667, 347);
+            this.SaveSettingsButton.Location = new System.Drawing.Point(667, 531);
             this.SaveSettingsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SaveSettingsButton.Name = "SaveSettingsButton";
             this.SaveSettingsButton.Size = new System.Drawing.Size(136, 23);
@@ -265,7 +270,7 @@ namespace XKPwGen.Options
             // 
             this.XkpasswordSiteLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.XkpasswordSiteLink.AutoSize = true;
-            this.XkpasswordSiteLink.Location = new System.Drawing.Point(18, 350);
+            this.XkpasswordSiteLink.Location = new System.Drawing.Point(18, 534);
             this.XkpasswordSiteLink.Name = "XkpasswordSiteLink";
             this.XkpasswordSiteLink.Size = new System.Drawing.Size(408, 16);
             this.XkpasswordSiteLink.TabIndex = 21;
@@ -367,12 +372,67 @@ namespace XKPwGen.Options
             this.ProfileNameCombobox.TabIndex = 31;
             this.ProfileNameCombobox.SelectedIndexChanged += new System.EventHandler(this.ProfileNameCombobox_SelectedIndexChanged);
             // 
+            // GenerateLabel
+            // 
+            this.GenerateLabel.AutoSize = true;
+            this.GenerateLabel.Location = new System.Drawing.Point(22, 357);
+            this.GenerateLabel.Name = "GenerateLabel";
+            this.GenerateLabel.Size = new System.Drawing.Size(63, 16);
+            this.GenerateLabel.TabIndex = 32;
+            this.GenerateLabel.Text = "Generate";
+            // 
+            // NumberOfExamplePasswordsDropdown
+            // 
+            this.NumberOfExamplePasswordsDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.NumberOfExamplePasswordsDropdown.FormattingEnabled = true;
+            this.NumberOfExamplePasswordsDropdown.Location = new System.Drawing.Point(91, 354);
+            this.NumberOfExamplePasswordsDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NumberOfExamplePasswordsDropdown.Name = "NumberOfExamplePasswordsDropdown";
+            this.NumberOfExamplePasswordsDropdown.Size = new System.Drawing.Size(82, 24);
+            this.NumberOfExamplePasswordsDropdown.TabIndex = 33;
+            // 
+            // ExamplePasswordsLabel
+            // 
+            this.ExamplePasswordsLabel.AutoSize = true;
+            this.ExamplePasswordsLabel.Location = new System.Drawing.Point(179, 357);
+            this.ExamplePasswordsLabel.Name = "ExamplePasswordsLabel";
+            this.ExamplePasswordsLabel.Size = new System.Drawing.Size(138, 16);
+            this.ExamplePasswordsLabel.TabIndex = 34;
+            this.ExamplePasswordsLabel.Text = "Example Password(s)";
+            // 
+            // ExamplePasswordsTextbox
+            // 
+            this.ExamplePasswordsTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExamplePasswordsTextbox.Location = new System.Drawing.Point(21, 398);
+            this.ExamplePasswordsTextbox.Multiline = true;
+            this.ExamplePasswordsTextbox.Name = "ExamplePasswordsTextbox";
+            this.ExamplePasswordsTextbox.ReadOnly = true;
+            this.ExamplePasswordsTextbox.Size = new System.Drawing.Size(789, 128);
+            this.ExamplePasswordsTextbox.TabIndex = 35;
+            this.ExamplePasswordsTextbox.WordWrap = false;
+            // 
+            // GenerateExamplesButton
+            // 
+            this.GenerateExamplesButton.Location = new System.Drawing.Point(330, 354);
+            this.GenerateExamplesButton.Name = "GenerateExamplesButton";
+            this.GenerateExamplesButton.Size = new System.Drawing.Size(295, 23);
+            this.GenerateExamplesButton.TabIndex = 36;
+            this.GenerateExamplesButton.Text = "Generate Examples (NOT SECURE!)";
+            this.GenerateExamplesButton.UseVisualStyleBackColor = true;
+            this.GenerateExamplesButton.Click += new System.EventHandler(this.GenerateExamplesButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(822, 383);
+            this.ClientSize = new System.Drawing.Size(822, 567);
+            this.Controls.Add(this.GenerateExamplesButton);
+            this.Controls.Add(this.ExamplePasswordsTextbox);
+            this.Controls.Add(this.ExamplePasswordsLabel);
+            this.Controls.Add(this.NumberOfExamplePasswordsDropdown);
+            this.Controls.Add(this.GenerateLabel);
             this.Controls.Add(this.ProfileNameCombobox);
             this.Controls.Add(this.ProfileLabel);
             this.Controls.Add(this.DictionaryDropdown);
@@ -448,6 +508,11 @@ namespace XKPwGen.Options
         private System.Windows.Forms.ComboBox DictionaryDropdown;
         private System.Windows.Forms.Label ProfileLabel;
         private System.Windows.Forms.ComboBox ProfileNameCombobox;
+        private System.Windows.Forms.Label GenerateLabel;
+        private System.Windows.Forms.ComboBox NumberOfExamplePasswordsDropdown;
+        private System.Windows.Forms.Label ExamplePasswordsLabel;
+        private System.Windows.Forms.TextBox ExamplePasswordsTextbox;
+        private System.Windows.Forms.Button GenerateExamplesButton;
     }
 }
 

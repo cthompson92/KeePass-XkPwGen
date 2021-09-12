@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using XKPwGen.SharedKernel;
 
@@ -36,6 +37,8 @@ namespace XKPwGen.Options
             PaddingTypeDropdown.DataSource = Enum.GetValues(typeof(PaddingType));
             PaddingCharacterDropdown.DataSource = Enum.GetValues(typeof(PaddingSymbolCharacterType));
             PaddingCharacterAlphabetTextbox.Text = DefaultCharacterAlphabet;
+
+            NumberOfExamplePasswordsDropdown.DataSource = Enumerable.Range(1, 20).ToList();
         }
 
         internal static Form1 Default()
@@ -148,6 +151,19 @@ namespace XKPwGen.Options
         {
             var options = OptionsManager.LoadOptions(ProfileName);
             ApplyProfile(options);
+        }
+
+        private void GenerateExamplesButton_Click(object sender, EventArgs e)
+        {
+            var count = (int)NumberOfExamplePasswordsDropdown.SelectedItem;
+
+            var sb = new StringBuilder();
+            for (var i = 0; i < count; i++)
+            {
+                sb.AppendLine(Algorithm.GeneratePassword(SimpleCryptoRandomStream.Instance, BuildOptions()));
+            }
+
+            ExamplePasswordsTextbox.Text = sb.ToString();
         }
     }
 }

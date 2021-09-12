@@ -27,7 +27,18 @@ namespace XKPwGen.SharedKernel
             var dictionary = WordDictionary.English;
 
             var wordLengths = new ulong[numberOfWords];
-            for (var i = 0; i < numberOfWords; i++) wordLengths[i] = crsRandomSource.NextRandom(minLength, maxLength);
+            if (minLength == maxLength)
+            {
+                //prevent generating random values when it will always be the same thing (NextRandom throws when the range has no variance)
+                for (var i = 0; i < wordLengths.Length; i++)
+                {
+                    wordLengths[i] = (ulong)minLength;
+                }
+            }
+            else
+            {
+                for (var i = 0; i < numberOfWords; i++) wordLengths[i] = crsRandomSource.NextRandom(minLength, maxLength);
+            }
 
             foreach (var wl in wordLengths)
             {

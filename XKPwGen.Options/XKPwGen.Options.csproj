@@ -20,4 +20,10 @@
     <ProjectReference Include="..\XKPwGen.SharedKernel\XKPwGen.SharedKernel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="KeePass">
+      <HintPath>..\XKPwGen\KeePass.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
