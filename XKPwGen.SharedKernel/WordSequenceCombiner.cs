@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Text;
 using KeePassLib.Cryptography;
-using XKPwGen;
-using XKPwGen.SharedKernel;
 
-namespace XkPwGen
+namespace XKPwGen.SharedKernel
 {
     public static class WordSequenceCombiner
     {

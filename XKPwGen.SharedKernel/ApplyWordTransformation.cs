@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using XKPwGen;
-using XKPwGen.SharedKernel;
 
-namespace XkPwGen
+namespace XKPwGen.SharedKernel
 {
     public static class ApplyWordTransformation
     {

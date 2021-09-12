@@ -19,7 +19,7 @@ namespace XKPwGen.Tests
             var options = new PasswordGeneratorOptions();
 
             //act
-            var result = PasswordGenerator.GeneratePassword(TestCryptoRandomStream.Instance, options);
+            var result = Algorithm.GeneratePassword(TestCryptoRandomStream.Instance, options);
 
             //assert
         }

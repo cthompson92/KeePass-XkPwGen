@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using KeePassLib;
 using KeePassLib.Cryptography;
 using KeePassLib.Cryptography.PasswordGenerator;
 using KeePassLib.Security;
-using XkPwGen;
 using XKPwGen.Options;
 using XKPwGen.SharedKernel;
 
@@ -80,7 +77,7 @@ namespace XKPwGen
 #endif
                 }
 
-                var pw = GeneratePassword(crsRandomSource, options);
+                var pw = Algorithm.GeneratePassword(crsRandomSource, options);
 
                 return new ProtectedString(false, pw);
             }
@@ -89,31 +86,6 @@ namespace XKPwGen
                 Logger.LogError(ex);
                 throw;
             }            
-        }
-
-        internal static string GeneratePassword(CryptoRandomStream crsRandomSource, PasswordGeneratorOptions options)
-        {
-            // Get the set of words that will be used in the password
-            var words = GetWordSequence(options.WordOptions, crsRandomSource)
-                // apply word transformations
-               .Transform(options.Transformations);
-
-            // combine the words into a string with separators (if/as needed)
-            var pw = WordSequenceCombiner.Combine(words.ToArray(), options.Separator, crsRandomSource);
-
-            // pad with digits before/after
-            pw = ApplyPaddingDigits.Apply(pw, options.PaddingDigits, crsRandomSource);
-
-            // pad with symbols at the start/end
-            pw = ApplyPaddingSymbols.Apply(pw, options.PaddingSymbols, crsRandomSource);
-
-            return pw;
-        }
-
-        private static IEnumerable<string> GetWordSequence(WordOptions options, CryptoRandomStream crsRandomSource)
-        {
-            return GetRandomWords
-                  .GetWords(options.NumberOfWords, options.MinLength, options.MaxLength, crsRandomSource);
         }
 
         /// <summary>

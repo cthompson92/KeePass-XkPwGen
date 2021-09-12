@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using KeePassLib.Cryptography;
 
-namespace XkPwGen
+namespace XKPwGen.SharedKernel
 {
     internal static class CryptoRandomStreamExtensions
     {
