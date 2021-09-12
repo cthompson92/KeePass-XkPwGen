@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,15 +10,20 @@ using XKPwGen.SharedKernel;
 
 namespace XKPwGen.Options
 {
-    public partial class Form1 : Form
+    public partial class OptionsUiForm : Form
     {
         private const string DefaultCharacterAlphabet = "!@$%^&*-_+=:|~?/.;()[]{}";
 
-        public Form1()
+        public OptionsUiForm()
         {
             InitializeComponent();
 
             SetProfileNameData();
+
+            if (string.IsNullOrEmpty(OptionsManager.GetCurrentProfileName()))
+            {
+                ProfileNameCombobox.SelectedItem = null;
+            }
 
             DictionaryDropdown.DataSource = Enum.GetValues(typeof(WordDictionary));
             NumberOfWordsDropdown.DataSource = Enumerable.Range(2, 9).ToList();
@@ -43,26 +49,32 @@ namespace XKPwGen.Options
             _safeUpdateProfileNames = new UpdateProfileNames(SetProfileNameData);
 
             FormClosed += (sender, args) => CleanUpClosedExplorerWindows();
-            OnSaveButtonClicked += OptionsManager.SaveOptions;
-            OnApplyButtonClicked += OptionsManager.SaveSelectedProfileName;
         }
 
         private void SetProfileNameData()
         {
-            ProfileNameCombobox.DataSource = OptionsManager.GetProfileFiles()
-                                                           .Select(x => Path.GetFileNameWithoutExtension(x.Name))
-                                                           .ToList();
+            var selectedItem = ProfileNameCombobox.SelectedItem;
+            var profileNames = OptionsManager.GetProfileFiles()
+                                             .Select(x => Path.GetFileNameWithoutExtension(x.Name))
+                                             .ToList();
+            ProfileNameCombobox.DataSource = profileNames;
+
+            if (selectedItem == null)
+            {
+                ProfileNameCombobox.SelectedItem = profileNames.FirstOrDefault(x => x == (string)selectedItem);
+            }
+
             ProfileNameCombobox.Refresh();
         }
 
-        internal static Form1 Default()
+        internal static OptionsUiForm Default()
         {
             return From(OptionsManager.LoadCurrentOptions(), OptionsManager.GetCurrentProfileName());
         }
 
-        public static Form1 From(PasswordGeneratorOptions options, string profileName)
+        public static OptionsUiForm From(PasswordGeneratorOptions options, string profileName)
         {
-            var form = new Form1();
+            var form = new OptionsUiForm();
             form.ApplyValues(options, profileName);
             return form;
         }
@@ -121,6 +133,11 @@ namespace XKPwGen.Options
         {
             get
             {
+                if (ProfileNameCombobox.SelectedItem != null)
+                {
+                    return (string)ProfileNameCombobox.SelectedItem;
+                }
+
                 return ProfileNameCombobox.Text;
             }
             private set
@@ -166,7 +183,10 @@ namespace XKPwGen.Options
         private void ProfileNameCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var options = OptionsManager.LoadOptions(ProfileName);
-            ApplyProfile(options);
+            if (options != null)
+            {
+                ApplyProfile(options);
+            }
         }
 
         private void GenerateExamplesButton_Click(object sender, EventArgs e)
@@ -179,7 +199,23 @@ namespace XKPwGen.Options
                 sb.AppendLine(Algorithm.GeneratePassword(SimpleCryptoRandomStream.Instance, BuildOptions()));
             }
 
-            ExamplePasswordsTextbox.Text = sb.ToString();
+            UpdateExamplesText(sb.ToString());
+        }
+
+        private void UpdateExamplesText(string text)
+        {
+            ExamplePasswordsTextbox.Text = text;
+            const int yMargin = 2;
+
+            var size = TextRenderer.MeasureText(ExamplePasswordsTextbox.Text, ExamplePasswordsTextbox.Font);
+            if (size.Height > ExamplePasswordsTextbox.ClientSize.Height + yMargin)
+            {
+                ExamplePasswordsTextbox.ScrollBars = ScrollBars.Vertical;
+            }
+            else
+            {
+                ExamplePasswordsTextbox.ScrollBars = ScrollBars.None;
+            }
         }
 
         public delegate void ApplyButtonClicked(string profileName);
@@ -188,11 +224,12 @@ namespace XKPwGen.Options
 
         private void ApplyProfileButton_Click(object sender, EventArgs e)
         {
+            var currentProfileName = ProfileName;
             SaveSettingsButton_Click(sender, e);
 
             if (OnApplyButtonClicked != null)
             {
-                OnApplyButtonClicked.Invoke(ProfileName);
+                OnApplyButtonClicked.Invoke(currentProfileName);
             }
         }
 

@@ -1,3 +1,4 @@
+using System;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using XKPwGen.SharedKernel;
@@ -8,6 +9,8 @@ namespace XKPwGen.Tests
     [Trait("Category", "Unit")]
     public class ApplyPaddingSymbolsTests
     {
+        private const string Password = "asdf";
+
         [Fact]
         public void ApplyShouldNotChangePasswordWhenTypeIsNone()
         {
@@ -15,15 +18,31 @@ namespace XKPwGen.Tests
             var options = new PaddingSymbolOptions()
             {
                 PaddingType = PaddingType.None,
+                PaddingSymbolType = PaddingSymbolCharacterType.RandomCharacter,
             };
 
-            const string pw = "qwerty";
-
             //act
-            var result = ApplyPaddingSymbols.Apply(pw, options, TestCryptoRandomStream.Instance);
+            var result = ApplyPaddingSymbols.Apply(Password, options, null, TestCryptoRandomStream.Instance);
 
             //assert
-            result.Should().Be(pw);
+            result.Should().Be(Password);
+        }
+
+        [Fact]
+        public void ApplyShouldNotThrowWhenWhenTypeIsNoneAndCharacterIsSeparatorCharacterAndSeparatorCharacterIsNull()
+        {
+            //arrange
+            var options = new PaddingSymbolOptions()
+            {
+                PaddingType = PaddingType.None,
+                PaddingSymbolType = PaddingSymbolCharacterType.UseSeparatorCharacter,
+            };
+
+            //act
+            Action action = () => ApplyPaddingSymbols.Apply(Password, options, null, TestCryptoRandomStream.Instance);
+
+            //assert
+            action.Should().NotThrow();
         }
 
         [Theory]
@@ -38,6 +57,7 @@ namespace XKPwGen.Tests
             var options = new PaddingSymbolOptions()
             {
                 PaddingType = PaddingType.Adaptive,
+                PaddingSymbolType = PaddingSymbolCharacterType.RandomCharacter,
                 PaddingCharacterAlphabet = "@!#%=~|",
                 TargetLength = targetLength,
             };
@@ -45,7 +65,7 @@ namespace XKPwGen.Tests
             var pw = new string('A', initialLength);
 
             //act
-            var result = ApplyPaddingSymbols.Apply(pw, options, TestCryptoRandomStream.Instance);
+            var result = ApplyPaddingSymbols.Apply(pw, options, null, TestCryptoRandomStream.Instance);
 
             //assert
             using (new AssertionScope())
@@ -53,6 +73,53 @@ namespace XKPwGen.Tests
                 result.Should().HaveLength(targetLength);
                 result.Should().MatchRegex(string.Format("{0}[{1}]{{{2}}}", pw, options.PaddingCharacterAlphabet, targetLength - initialLength));
             }
+        }
+
+        [Fact]
+        public void ApplyShouldThrowWhenTypeIsAdaptiveAndCharacterIsSeparatorCharacterAndSeparatorCharacterIsNull()
+        {
+            //arrange
+            var options = new PaddingSymbolOptions()
+            {
+                PaddingType = PaddingType.Adaptive,
+                PaddingSymbolType = PaddingSymbolCharacterType.UseSeparatorCharacter,
+                PaddingCharacterAlphabet = "@!#%=~|",
+                TargetLength = 7,
+            };
+
+            var pw = new string('A', 4);
+
+            //act
+            Action action = () => ApplyPaddingSymbols.Apply(pw, options, null, TestCryptoRandomStream.Instance);
+
+            //assert
+            action.Should().Throw<ArgumentNullException>();
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        [InlineData(5)]
+        public void ApplyShouldThrowWhenTypeIsFixedAndCharacterIsSeparatorCharacterAndSeparatorCharacterIsNull(int count)
+        {
+            //arrange
+            var options = new PaddingSymbolOptions()
+            {
+                PaddingType = PaddingType.Fixed,
+                PaddingSymbolType = PaddingSymbolCharacterType.UseSeparatorCharacter,
+                PaddingCharacterAlphabet = "@!#%=~|",
+                SymbolsStart = count,
+                SymbolsEnd = 0,
+            };
+
+            //act
+            Action action = () => ApplyPaddingSymbols.Apply(Password, options, null, TestCryptoRandomStream.Instance);
+
+            //assert
+            action.Should().Throw<ArgumentNullException>();
         }
 
         [Theory]
@@ -68,21 +135,20 @@ namespace XKPwGen.Tests
             var options = new PaddingSymbolOptions()
             {
                 PaddingType = PaddingType.Fixed,
+                PaddingSymbolType = PaddingSymbolCharacterType.RandomCharacter,
                 PaddingCharacterAlphabet = "@!#%=~|",
                 SymbolsStart = count,
                 SymbolsEnd = 0,
             };
 
-            const string pw = "asdf";
-
             //act
-            var result = ApplyPaddingSymbols.Apply(pw, options, TestCryptoRandomStream.Instance);
+            var result = ApplyPaddingSymbols.Apply(Password, options, null, TestCryptoRandomStream.Instance);
 
             //assert
             using (new AssertionScope())
             {
-                result.Should().HaveLength(pw.Length + count);
-                result.Should().MatchRegex(string.Format("[{1}]{{{2}}}{0}", pw, options.PaddingCharacterAlphabet, count));
+                result.Should().HaveLength(Password.Length + count);
+                result.Should().MatchRegex(string.Format("[{1}]{{{2}}}{0}", Password, options.PaddingCharacterAlphabet, count));
             }
         }
 
@@ -99,21 +165,20 @@ namespace XKPwGen.Tests
             var options = new PaddingSymbolOptions()
             {
                 PaddingType = PaddingType.Fixed,
+                PaddingSymbolType = PaddingSymbolCharacterType.RandomCharacter,
                 PaddingCharacterAlphabet = "@!#%=~|",
                 SymbolsStart = 0,
                 SymbolsEnd = count,
             };
 
-            const string pw = "asdf";
-
             //act
-            var result = ApplyPaddingSymbols.Apply(pw, options, TestCryptoRandomStream.Instance);
+            var result = ApplyPaddingSymbols.Apply(Password, options, null, TestCryptoRandomStream.Instance);
 
             //assert
             using (new AssertionScope())
             {
-                result.Should().HaveLength(pw.Length + count);
-                result.Should().MatchRegex(string.Format("{0}[{1}]{{{2}}}", pw, options.PaddingCharacterAlphabet, count));
+                result.Should().HaveLength(Password.Length + count);
+                result.Should().MatchRegex(string.Format("{0}[{1}]{{{2}}}", Password, options.PaddingCharacterAlphabet, count));
             }
         }
     }

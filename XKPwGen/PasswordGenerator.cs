@@ -115,7 +115,7 @@ namespace XKPwGen
 
         public override string GetOptions(string strCurrentOptions)
         {
-            var optionsUi = new Form1();
+            var optionsUi = new OptionsUiForm();
             optionsUi.ShowDialog();
 
             return optionsUi.ProfileName;

@@ -15,7 +15,13 @@ namespace XKPwGen.SharedKernel
 
         public static string GetCurrentProfileName()
         {
-            return File.ReadAllText(GetSelectedProfileFilePath());
+            var fileName = GetSelectedProfileFilePath();
+            if (!File.Exists(fileName))
+            {
+                return string.Empty;
+            }
+
+            return File.ReadAllText(fileName);
         }
 
         public static PasswordGeneratorOptions LoadCurrentOptions()

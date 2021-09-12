@@ -13,14 +13,16 @@ namespace XKPwGen.SharedKernel
                 // apply word transformations
                .Transform(options.Transformations);
 
+            var separator = GetSeparatorCharacter.GetNext(options.Separator, crsRandomSource);
+
             // combine the words into a string with separators (if/as needed)
-            var pw = WordSequenceCombiner.Combine(words.ToArray(), options.Separator, crsRandomSource);
+            var pw = WordSequenceCombiner.Combine(words.ToArray(), separator, crsRandomSource);
 
             // pad with digits before/after
             pw = ApplyPaddingDigits.Apply(pw, options.PaddingDigits, crsRandomSource);
 
             // pad with symbols at the start/end
-            pw = ApplyPaddingSymbols.Apply(pw, options.PaddingSymbols, crsRandomSource);
+            pw = ApplyPaddingSymbols.Apply(pw, options.PaddingSymbols, separator, crsRandomSource);
 
             return pw;
         }

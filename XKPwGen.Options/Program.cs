@@ -14,8 +14,9 @@ namespace XKPwGen.Options
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var mainForm = Form1.Default();
+            var mainForm = OptionsUiForm.Default();
             mainForm.OnSaveButtonClicked += OptionsManager.SaveOptions;
+            mainForm.OnApplyButtonClicked += OptionsManager.SaveSelectedProfileName;
             Application.Run(mainForm);
         }
     }

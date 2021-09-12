@@ -1,7 +1,7 @@
 ﻿
 namespace XKPwGen.Options
 {
-    partial class Form1
+    partial class OptionsUiForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -202,18 +202,20 @@ namespace XKPwGen.Options
             // 
             // SeparatorAlphabetTextbox
             // 
+            this.SeparatorAlphabetTextbox.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SeparatorAlphabetTextbox.Location = new System.Drawing.Point(496, 190);
             this.SeparatorAlphabetTextbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SeparatorAlphabetTextbox.Name = "SeparatorAlphabetTextbox";
-            this.SeparatorAlphabetTextbox.Size = new System.Drawing.Size(309, 22);
+            this.SeparatorAlphabetTextbox.Size = new System.Drawing.Size(309, 31);
             this.SeparatorAlphabetTextbox.TabIndex = 4;
             // 
             // PaddingCharacterAlphabetTextbox
             // 
+            this.PaddingCharacterAlphabetTextbox.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PaddingCharacterAlphabetTextbox.Location = new System.Drawing.Point(609, 310);
             this.PaddingCharacterAlphabetTextbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PaddingCharacterAlphabetTextbox.Name = "PaddingCharacterAlphabetTextbox";
-            this.PaddingCharacterAlphabetTextbox.Size = new System.Drawing.Size(196, 22);
+            this.PaddingCharacterAlphabetTextbox.Size = new System.Drawing.Size(196, 31);
             this.PaddingCharacterAlphabetTextbox.TabIndex = 15;
             // 
             // PaddingTypeDropdown
@@ -406,7 +408,9 @@ namespace XKPwGen.Options
             // 
             this.ExamplePasswordsTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExamplePasswordsTextbox.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExamplePasswordsTextbox.Location = new System.Drawing.Point(21, 398);
+            this.ExamplePasswordsTextbox.MinimumSize = new System.Drawing.Size(789, 128);
             this.ExamplePasswordsTextbox.Multiline = true;
             this.ExamplePasswordsTextbox.Name = "ExamplePasswordsTextbox";
             this.ExamplePasswordsTextbox.ReadOnly = true;
@@ -448,11 +452,10 @@ namespace XKPwGen.Options
             this.ManageProfilesButton.UseVisualStyleBackColor = true;
             this.ManageProfilesButton.Click += new System.EventHandler(this.ManageProfilesButton_Click);
             // 
-            // Form1
+            // OptionsUiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(822, 567);
             this.Controls.Add(this.ManageProfilesButton);
             this.Controls.Add(this.ApplyProfileButton);
@@ -494,8 +497,8 @@ namespace XKPwGen.Options
             this.Controls.Add(this.CaseTransformationLabel);
             this.Controls.Add(this.CaseTransformationDropdown);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(840, 430);
-            this.Name = "Form1";
+            this.MinimumSize = new System.Drawing.Size(840, 614);
+            this.Name = "OptionsUiForm";
             this.Text = "XkPwGen Options";
             this.ResumeLayout(false);
             this.PerformLayout();

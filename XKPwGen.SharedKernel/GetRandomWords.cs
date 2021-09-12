@@ -6,11 +6,18 @@ namespace XKPwGen.SharedKernel
 {
     public static class GetRandomWords
     {
+        private static string _dictionarySource = "google-10000-english-usa-no-swears";
+
+        public static void UseDictionaryDataFile(string fileNameBase)
+        {
+            _dictionarySource = fileNameBase;
+        }
+
         public static string GetDataFileName(WordDictionary dictionary, int length)
         {
             return Path.GetFullPath(
                 OptionsManager.GetAppDataPathRoot()
-              + string.Format("/{0}/google-10000-english-usa-no-swears_{1}.dictdata", dictionary, length));
+              + string.Format("/{0}/{1}_{2}.dictdata", dictionary, _dictionarySource, length));
         }
 
         private static string GetWordOfLengthFromDictionary(WordDictionary dictionary, int length, CryptoRandomStream crsRandomSource)
