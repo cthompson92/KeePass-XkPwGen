@@ -43,6 +43,8 @@ namespace XKPwGen.Options
             _safeUpdateProfileNames = new UpdateProfileNames(SetProfileNameData);
 
             FormClosed += (sender, args) => CleanUpClosedExplorerWindows();
+            OnSaveButtonClicked += OptionsManager.SaveOptions;
+            OnApplyButtonClicked += OptionsManager.SaveSelectedProfileName;
         }
 
         private void SetProfileNameData()
