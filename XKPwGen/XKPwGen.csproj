@@ -17,14 +17,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove=".plgx" />
 		<None Remove="KeePass.exe" />
+		<None Remove="KeePass.exe.config" />
 		<None Remove="XKPwGen.csproj.DotSettings" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Reference Include="KeePass">
 			<HintPath>KeePass.exe</HintPath>
+			<ExcludeFromPlgx />
 		</Reference>
 	</ItemGroup>
 
@@ -36,9 +37,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="KeePass.exe">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
+		<Content Include="KeePass.exe">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<ExcludeFromPlgx />
+		</Content>
+		<Content Include="KeePass.exe.config">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<ExcludeFromPlgx />
+		</Content>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -47,11 +53,12 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="PlgxBuildTasks" Version="1.1.0-beta" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\XKPwGen.Options\XKPwGen.Options.csproj" />
-	  <ProjectReference Include="..\XKPwGen.SharedKernel\XKPwGen.SharedKernel.csproj" />
+		<ProjectReference Include="..\XKPwGen.Options\XKPwGen.Options.csproj" />
+		<ProjectReference Include="..\XKPwGen.SharedKernel\XKPwGen.SharedKernel.csproj" />
 	</ItemGroup>
 
 </Project>

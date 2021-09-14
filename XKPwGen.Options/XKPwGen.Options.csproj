@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-	<TargetFrameworks>net45;net461;net472;net48;</TargetFrameworks>
-    <UseWindowsForms>true</UseWindowsForms>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFrameworks>net45;net461;net472;net48;</TargetFrameworks>
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<None Remove="appSettings.json" />
@@ -26,11 +26,12 @@
 		<None Remove="Dictionaries\words_alpha_8.txt" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="appSettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="appSettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<ExcludeFromPlgx />
+		</Content>
+	</ItemGroup>
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Dictionaries\google-10000-english-usa-no-swears_10.dictdata" />
@@ -55,10 +56,11 @@
 		<ProjectReference Include="..\XKPwGen.SharedKernel\XKPwGen.SharedKernel.csproj" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="KeePass">
-      <HintPath>..\XKPwGen\KeePass.exe</HintPath>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="KeePass">
+			<HintPath>..\XKPwGen\KeePass.exe</HintPath>
+			<ExcludeFromPlgx />
+		</Reference>
+	</ItemGroup>
 
 </Project>

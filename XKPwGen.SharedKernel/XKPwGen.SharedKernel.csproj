@@ -9,9 +9,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="KeePass">
-	    <HintPath>..\XKPwGen\KeePass.exe</HintPath>
-	  </Reference>
+		<Reference Include="KeePass">
+			<HintPath>..\XKPwGen\KeePass.exe</HintPath>
+			<ExcludeFromPlgx />
+		</Reference>
 	</ItemGroup>
 
 </Project>
