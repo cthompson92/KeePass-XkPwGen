@@ -56,7 +56,13 @@ namespace XKPwGen.SharedKernel
         {
             var root = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-            return Path.GetFullPath(root + "/XkPwGen/");
+            var path = Path.GetFullPath(root + "/XkPwGen/");
+			
+			// ensure the required appdata directory exists whenever it is accessed
+			// this is safe even if the directory already exists
+			Directory.CreateDirectory(path);
+
+            return path;
         }
 
         private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings()
