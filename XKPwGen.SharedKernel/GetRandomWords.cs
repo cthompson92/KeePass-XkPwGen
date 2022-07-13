@@ -1,56 +1,50 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using KeePassLib.Cryptography;
 
 namespace XKPwGen.SharedKernel
 {
     public static class GetRandomWords
     {
-        private static string _dictionarySource = "google-10000-english-usa-no-swears";
-
-        public static void UseDictionaryDataFile(string fileNameBase)
+	    private static string GetWordOfLengthFromDictionary(
+		    ILanguageDictionary dictionary, int length, CryptoRandomStream crsRandomSource)
         {
-            _dictionarySource = fileNameBase;
-        }
-
-        public static string GetDataFileName(WordDictionary dictionary, int length)
-        {
-            return Path.GetFullPath(
-                OptionsManager.GetAppDataPathRoot()
-              + string.Format("/{0}/{1}_{2}.dictdata", dictionary, _dictionarySource, length));
-        }
-
-        private static string GetWordOfLengthFromDictionary(WordDictionary dictionary, int length, CryptoRandomStream crsRandomSource)
-        {
-            var wordsOfLength = File.ReadAllLines(GetDataFileName(dictionary, length));
+            var wordsOfLength = dictionary.WordPages[length].GetWords();
 
             var randomIndex = crsRandomSource.NextRandomIndex(wordsOfLength);
 
             return wordsOfLength[randomIndex];
         }
 
-        public static IEnumerable<string> GetWords(int numberOfWords, int minLength, int maxLength, CryptoRandomStream crsRandomSource)
+        public static IEnumerable<string> GetWords(
+	        int numberOfWords, int minLength, int maxLength, CryptoRandomStream crsRandomSource, ILanguageDictionary dictionary)
         {
-            var dictionary = WordDictionary.English;
-
-            var wordLengths = new ulong[numberOfWords];
-            if (minLength == maxLength)
-            {
-                //prevent generating random values when it will always be the same thing (NextRandom throws when the range has no variance)
-                for (var i = 0; i < wordLengths.Length; i++)
-                {
-                    wordLengths[i] = (ulong)minLength;
-                }
-            }
-            else
-            {
-                for (var i = 0; i < numberOfWords; i++) wordLengths[i] = crsRandomSource.NextRandom(minLength, maxLength);
-            }
-
-            foreach (var wl in wordLengths)
+			// need to randomly determine the length of each word
+			// so we can generate a random word of the correct length
+	        var wordLengths = GetWordLengths(numberOfWords, minLength, maxLength, crsRandomSource);
+	        foreach (var wl in wordLengths)
             {
                 yield return GetWordOfLengthFromDictionary(dictionary, (int)wl, crsRandomSource);
             }
+        }
+
+        private static ulong[] GetWordLengths(
+	        int numberOfWords, int minLength, int maxLength, CryptoRandomStream crsRandomSource)
+        {
+	        var wordLengths = new ulong[numberOfWords];
+	        if (minLength == maxLength)
+	        {
+		        //prevent generating random values when it will always be the same thing (NextRandom throws when the range has no variance)
+		        for (var i = 0; i < wordLengths.Length; i++)
+		        {
+			        wordLengths[i] = (ulong)minLength;
+		        }
+	        }
+	        else
+	        {
+		        for (var i = 0; i < numberOfWords; i++) wordLengths[i] = crsRandomSource.NextRandom(minLength, maxLength);
+	        }
+
+	        return wordLengths;
         }
     }
 }

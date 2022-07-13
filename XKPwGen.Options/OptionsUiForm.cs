@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -196,7 +195,7 @@ namespace XKPwGen.Options
             var sb = new StringBuilder();
             for (var i = 0; i < count; i++)
             {
-                sb.AppendLine(Algorithm.GeneratePassword(SimpleCryptoRandomStream.Instance, BuildOptions()));
+                sb.AppendLine(Algorithms.Google.GeneratePassword(SimpleCryptoRandomStream.Instance, BuildOptions()));
             }
 
             UpdateExamplesText(sb.ToString());

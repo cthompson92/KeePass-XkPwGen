@@ -4,33 +4,40 @@ using KeePassLib.Cryptography;
 
 namespace XKPwGen.SharedKernel
 {
-    public static class Algorithm
-    {
-        public static string GeneratePassword(CryptoRandomStream crsRandomSource, PasswordGeneratorOptions options)
-        {
-            // Get the set of words that will be used in the password
-            var words = GetWordSequence(options.WordOptions, crsRandomSource)
-                // apply word transformations
-               .Transform(options.Transformations);
+	public class Algorithm
+	{
+		private readonly ILanguageDictionary _dictionary;
 
-            var separator = GetSeparatorCharacter.GetNext(options.Separator, crsRandomSource);
+		public Algorithm(ILanguageDictionary dictionary)
+		{
+			_dictionary = dictionary;
+		}
 
-            // combine the words into a string with separators (if/as needed)
-            var pw = WordSequenceCombiner.Combine(words.ToArray(), separator, crsRandomSource);
+		public string GeneratePassword(CryptoRandomStream crsRandomSource, PasswordGeneratorOptions options)
+		{
+			// Get the set of words that will be used in the password
+			var words = GetWordSequence(options.WordOptions, crsRandomSource)
+			   // apply word transformations
+			   .Transform(options.Transformations);
 
-            // pad with digits before/after
-            pw = ApplyPaddingDigits.Apply(pw, options.PaddingDigits, crsRandomSource);
+			var separator = GetSeparatorCharacter.GetNext(options.Separator, crsRandomSource);
 
-            // pad with symbols at the start/end
-            pw = ApplyPaddingSymbols.Apply(pw, options.PaddingSymbols, separator, crsRandomSource);
+			// combine the words into a string with separators (if/as needed)
+			var pw = WordSequenceCombiner.Combine(words.ToArray(), separator, crsRandomSource);
 
-            return pw;
-        }
+			// pad with digits before/after
+			pw = ApplyPaddingDigits.Apply(pw, options.PaddingDigits, crsRandomSource);
 
-        private static IEnumerable<string> GetWordSequence(WordOptions options, CryptoRandomStream crsRandomSource)
-        {
-            return GetRandomWords
-               .GetWords(options.NumberOfWords, options.MinLength, options.MaxLength, crsRandomSource);
-        }
-    }
+			// pad with symbols at the start/end
+			pw = ApplyPaddingSymbols.Apply(pw, options.PaddingSymbols, separator, crsRandomSource);
+
+			return pw;
+		}
+
+		private IEnumerable<string> GetWordSequence(WordOptions options, CryptoRandomStream crsRandomSource)
+		{
+			return GetRandomWords
+			   .GetWords(options.NumberOfWords, options.MinLength, options.MaxLength, crsRandomSource, _dictionary);
+		}
+	}
 }

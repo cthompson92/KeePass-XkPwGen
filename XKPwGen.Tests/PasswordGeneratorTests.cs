@@ -1,3 +1,4 @@
+﻿using XKPwGen.Options;
 using XKPwGen.SharedKernel;
 using Xunit;
 
@@ -19,7 +20,7 @@ namespace XKPwGen.Tests
             var options = new PasswordGeneratorOptions();
 
             //act
-            var result = Algorithm.GeneratePassword(TestCryptoRandomStream.Instance, options);
+            var result = Algorithms.Google.GeneratePassword(TestCryptoRandomStream.Instance, options);
 
             //assert
         }

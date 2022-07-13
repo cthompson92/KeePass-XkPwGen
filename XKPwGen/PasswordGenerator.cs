@@ -80,7 +80,7 @@ namespace XKPwGen
 #endif
                 }
 
-                var pw = Algorithm.GeneratePassword(crsRandomSource, options);
+                var pw = Algorithms.Google.GeneratePassword(crsRandomSource, options);
 
                 return new ProtectedString(false, pw);
             }

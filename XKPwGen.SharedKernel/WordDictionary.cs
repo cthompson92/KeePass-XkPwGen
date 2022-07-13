@@ -1,7 +1,7 @@
 ﻿namespace XKPwGen.SharedKernel
 {
-    public enum WordDictionary
-    {
-        English,
-    }
+	public enum WordDictionary
+	{
+		English,
+	}
 }

@@ -6,9 +6,25 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="appSettings.json" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="appSettings.json" />
+		<None Remove="Dictionaries\google-10000-english-usa-no-swears_10.dictdata" />
+		<None Remove="Dictionaries\google-10000-english-usa-no-swears_11.dictdata" />
+		<None Remove="Dictionaries\google-10000-english-usa-no-swears_12.dictdata" />
+		<None Remove="Dictionaries\google-10000-english-usa-no-swears_3.dictdata" />
+		<None Remove="Dictionaries\google-10000-english-usa-no-swears_4.dictdata" />
+		<None Remove="Dictionaries\google-10000-english-usa-no-swears_5.dictdata" />
+		<None Remove="Dictionaries\google-10000-english-usa-no-swears_6.dictdata" />
+		<None Remove="Dictionaries\google-10000-english-usa-no-swears_7.dictdata" />
+		<None Remove="Dictionaries\google-10000-english-usa-no-swears_8.dictdata" />
+		<None Remove="Dictionaries\google-10000-english-usa-no-swears_9.dictdata" />
+		<None Remove="Dictionaries\words_alpha_3.txt" />
+		<None Remove="Dictionaries\words_alpha_4.txt" />
+		<None Remove="Dictionaries\words_alpha_5.txt" />
+		<None Remove="Dictionaries\words_alpha_6.txt" />
+		<None Remove="Dictionaries\words_alpha_7.txt" />
+		<None Remove="Dictionaries\words_alpha_8.txt" />
+	</ItemGroup>
 
   <ItemGroup>
     <Content Include="appSettings.json">
@@ -16,9 +32,28 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\XKPwGen.SharedKernel\XKPwGen.SharedKernel.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="Dictionaries\google-10000-english-usa-no-swears_10.dictdata" />
+	  <EmbeddedResource Include="Dictionaries\google-10000-english-usa-no-swears_11.dictdata" />
+	  <EmbeddedResource Include="Dictionaries\google-10000-english-usa-no-swears_12.dictdata" />
+	  <EmbeddedResource Include="Dictionaries\google-10000-english-usa-no-swears_3.dictdata" />
+	  <EmbeddedResource Include="Dictionaries\google-10000-english-usa-no-swears_4.dictdata" />
+	  <EmbeddedResource Include="Dictionaries\google-10000-english-usa-no-swears_5.dictdata" />
+	  <EmbeddedResource Include="Dictionaries\google-10000-english-usa-no-swears_6.dictdata" />
+	  <EmbeddedResource Include="Dictionaries\google-10000-english-usa-no-swears_7.dictdata" />
+	  <EmbeddedResource Include="Dictionaries\google-10000-english-usa-no-swears_8.dictdata" />
+	  <EmbeddedResource Include="Dictionaries\google-10000-english-usa-no-swears_9.dictdata" />
+	  <EmbeddedResource Include="Dictionaries\words_alpha_3.txt" />
+	  <EmbeddedResource Include="Dictionaries\words_alpha_4.txt" />
+	  <EmbeddedResource Include="Dictionaries\words_alpha_5.txt" />
+	  <EmbeddedResource Include="Dictionaries\words_alpha_6.txt" />
+	  <EmbeddedResource Include="Dictionaries\words_alpha_7.txt" />
+	  <EmbeddedResource Include="Dictionaries\words_alpha_8.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\XKPwGen.SharedKernel\XKPwGen.SharedKernel.csproj" />
+	</ItemGroup>
 
   <ItemGroup>
     <Reference Include="KeePass">
